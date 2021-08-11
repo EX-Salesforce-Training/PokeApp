@@ -1,0 +1,50 @@
+/* menu bar */
+
+.THIS.menu-container {
+    background-color: #DE6449;
+    max-width: 7vw;
+    min-height: 100vh;
+}
+    
+.THIS .menu-list {
+	list-style-type: none;
+    padding: 1rem;
+    margin: 0;
+}
+    
+.THIS .menu-item {
+	border-radius: 8px;	 
+}
+    
+.THIS .menu-item:hover {
+    background-color: #AC3920; 
+    transition: background-color 0.5s;
+}
+
+.THIS .blank-btn {
+    border: 0;
+    background-color: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* search tool */
+.THIS.search-tool {
+    top: 0;
+    position: fixed;
+    z-index: -1;
+    min-height: 100vh;
+    width: 40vw;
+    background-color: #DE6449;
+    transition: left 1s;
+}
+
+.THIS.is-visible {
+    left: 47vw;
+    transition: left 1s;
+}
+
+.THIS.is-hidden {
+    left: -47vw;
+    transition: left 1s;
+}
