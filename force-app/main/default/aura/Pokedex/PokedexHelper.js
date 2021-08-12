@@ -21,7 +21,7 @@
                 for(let i = 0; i < parsedData.length; i++) {
                     maps.push({
                         id: ids[i],
-                        name: names[i],
+                        name: names[i][0].toUpperCase() + names[i].slice(1),
                         url: urls[i] 
                     });                    
                 }

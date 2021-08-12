@@ -10,32 +10,55 @@
     <c:MenuBar />
     
     <div style="margin-left: 10vw;">
-        <h1>Pokedex</h1>
-        <br />
+        <header class="page-header">
+            <img src="data:image/png;base64,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" />
+            <h1 class="page-title">Pokedex</h1>
+        </header>
         
         <!-- pagination -->
-        <button class="pagination-button">
-        	Previous
-        </button>
-        <button class="pagination-button">
-        	Next
-        </button>
+        <div class="text-center">
+            <button class="pagination-button" onclick="{! c.prev }">
+                Previous
+            </button>
+            
+            
+            <button class="pagination-button" onclick="{! c.next }">
+                Next
+            </button>
+        </div>
         
-        <table class="data-table">
-            <tr>
-                <td class="data-table-item">Pokemon Id</td>
-                <td class="data-table-item">Name</td>
-            </tr>
-            <aura:iteration items="{! v.pokeData }" var="pokeDatum">
-                <tr>
-                    <td class="data-table-item">
-                        <a href='#' class="data-link">
-                            # {! pokeDatum.id }
-                        </a>
-                    </td>
-                    <td class="data-table-item">{! pokeDatum.name }</td>
+        <div class="data-table-wrapper">
+            <table class="data-table">
+                
+                <tr class='data-table-row'>
+                    <th class="data-table-header">Pokemon Id</th>
+                    <th class="data-table-header">Name</th>
                 </tr>
-            </aura:iteration>
-        </table>
+                <aura:iteration items="{! v.pokeData }" var="pokeDatum">
+                    <tr class='data-table-row' onclick="{! loadData }" >
+                        <td class="data-table-item" aura:id="{! 'name='pokeDatum.name + ';id=' pokeDatum.id }">
+                            <a href='#' class="data-link">
+                                # {! pokeDatum.id }
+                            </a>
+                        </td>
+                        <td class="data-table-item">
+                            {! pokeDatum.name }
+                        </td>
+                    </tr>
+                </aura:iteration>
+            </table>
+        </div>
+        
+        <!-- pagination -->
+        <div class="text-center">
+            <button class="pagination-button" onclick="{! c.prev }">
+                Previous
+            </button>
+            
+            
+            <button class="pagination-button" onclick="{! c.next }">
+                Next
+            </button>
+        </div>
     </div>
 </aura:component>
