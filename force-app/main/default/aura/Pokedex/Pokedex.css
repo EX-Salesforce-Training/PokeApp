@@ -1,7 +1,21 @@
 .THIS {
 }
 
-.THIS.layout {
-    display: grid;
-    grid-template-columns: 1fr 9fr;
+
+.THIS .data-table-item {
+    padding: 0.4rem;
+}
+
+.THIS .data-table {
+    display: flex;
+    justify-content: space-between;
+}
+
+.THIS .data-link {
+    display: block;
+}
+
+.THIS .pagination-button {
+    border: none;
+    background-color: transparent;
 }
