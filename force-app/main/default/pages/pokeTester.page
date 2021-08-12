@@ -1,0 +1,6 @@
+<apex:page controller="PokeController">
+	{!testString}
+    <apex:form >
+	    <apex:commandButton action="{!doCallout}" id="editButton" value="Edit"/>
+    </apex:form>
+</apex:page>
