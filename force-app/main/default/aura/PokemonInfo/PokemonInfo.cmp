@@ -1,0 +1,12 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="pokeData" type="String" default="null" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.getPokemonData}"/>
+    
+    <aura:if isTrue="{!v.pokeData != null}">
+    	<div class="information">
+        	
+        </div>
+    </aura:if>
+    
+</aura:component>
