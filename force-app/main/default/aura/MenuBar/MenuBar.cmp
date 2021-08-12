@@ -9,19 +9,63 @@
                 </a>
             </li>
             
+            <!--
             <li class='menu-item'>
                 <a class="blank-btn" onclick="{! c.toggleItem }" id='filter'>
                     <lightning:icon class="slds-icon_small" iconName='standard:filter' />
                 </a>
             </li>
+			-->
             
             
         </ul>
     </div>
     
     <div aura:id="search-menu" class="search-tool is-hidden">
+        <div class="search-bar-wrapper">
+            <div class="menu-search-item">
+                <label class="slds-form-element__label" for="search-bar">Search</label>
+                <div class="w-100 flex-center-h">
+                	<input id="search-bar" class="menu-bar search-bar" placeholder = 'search...'/>
+                </div>
+            </div>
             
+            <div class="menu-search-item">
+                <label class="slds-form-element__label" for="filter-bar">Filter by</label>
+                <div class="slds-form-element__control w-100">
+                    <div class="slds-select_container w-100 flex-center-h">
+                        <select class="slds-select menu-bar filter-bar" id="filter-bar">
+                            <option>None</option>
+                            <option>Generation</option>
+                            <option>Location</option>
+                            <option>Legendary</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    
+    <!--
+    <div aura:id="filter-menu" class="search-tool is-hidden">
+        <div class="search-bar-wrapper w-100">
+            <div class="slds-form-element w-100">
+                <label class="slds-form-element__label" for="select-01">Filter by</label>
+                <div class="slds-form-element__control w-100">
+                    <div class="slds-select_container w-100 flex-center-h">
+                        <select class="slds-select menu-bar filter-bar" id="select-01">
+                            <option>None</option>
+                            <option>Generation</option>
+                            <option>Location</option>
+                            <option>Legendary</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+	-->
     
     
 </aura:component>
