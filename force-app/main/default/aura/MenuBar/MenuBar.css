@@ -2,8 +2,12 @@
 
 .THIS.menu-container {
     background-color: #DE6449;
-    max-width: 7vw;
+    width: 7vw;
     min-height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2;
 }
     
 .THIS .menu-list {
@@ -32,19 +36,60 @@
 .THIS.search-tool {
     top: 0;
     position: fixed;
-    z-index: -1;
     min-height: 100vh;
+    z-index: 0;
     width: 40vw;
     background-color: #DE6449;
     transition: left 1s;
 }
 
 .THIS.is-visible {
-    left: 47vw;
+    left: 7vw;
+    z-index: 1;
     transition: left 1s;
 }
 
 .THIS.is-hidden {
     left: -47vw;
     transition: left 1s;
+}
+
+.THIS .search-bar-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem;
+    color: white;
+}
+
+.THIS .menu-bar {
+    width: 90%;
+    border-radius: 16px;
+    border: none;
+    outline: none;
+}
+
+.THIS .menu-search-item {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.THIS .search-bar {
+    padding: 0.5rem;
+}
+
+.THIS .filter-bar {
+    
+}
+
+/* utility */
+
+.THIS .flex-center-h {
+    display: flex;
+    justify-content: center;
+}
+
+.THIS .w-100 {
+    width: 100%;
 }
