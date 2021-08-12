@@ -1,50 +1,84 @@
 ({
 
-    getApiData : function(component, parser, targetLink){
-		let action = component.get("c.getJsonString");
-        action.setParams({"apiTarget" : targetLink });
-        action.setCallback(this, function(a){
-            let state = a.getState();
+    getPokemonPage : function(component){
+        let page = component.get("v.pageNumber");
+        let targetLink = "https://pokeapi.co/api/v2/pokemon-species/?offset=" + (page * 20).toString() + "&limit=20";
+        let action = component.get("c.getJsonString");
+        action.setParams({"apiTarget" : targetLink});
+        action.setCallback(this, function(result){
+            let state = result.getState();
             if(state == 'SUCCESS'){
-				parser(component, a.getReturnValue());
+				const parsedData = JSON.parse(result.getReturnValue()).results;
+                const names = parsedData.map( function ({name}) {return name} );
+                const ids = parsedData.map( function ({url}) {
+                    const urlArr = url.split('/');
+                    const id = urlArr[urlArr.length-2];
+                    return id;});
+                
+                const maps = [];
+                for(let i = 0; i < parsedData.length; i++){
+                    maps.push({
+                        id: ids[i],
+                        name: names[i],
+                        url: urls[i]
+                    });
+                }
+                component.set('v.listOfPokeMon', maps);
             }
         });
-        $A.enqueueAction(action);        
+        $A.enqueueAction(action);
     },
     
-    getPokemonPage : function(component) {
-        let page = component.get("v.pageNumber");
-		let targetLink = "https://pokeapi.co/api/v2/pokemon-species/?offset=" + (page * 20).toString() + "&limit=20";
-		getApiData(component, parsePokemonList, targetLink);
-    },
 
-    getPokeData : function(component, id){
+    getPokeData : function(component, id, name){
         let page = component.get("v.pageNumber");
-        let targetLink = "https://pokeapi.co/api/v2/pokemon-species/" + id + "/";
-		getApiData(component, parsePokemonData, targetLink);
-    },
+        let targetLink1 = "https://pokeapi.co/api/v2/pokemon-species/" + id + "/";
+        let targetLink2 = "https://pokeapi.co/api/v2/pokemon-species/" + id + "/";
 
-    parsePokemonData : function(component, pokedata) {
-        let jsonPokeData = JSON.parse(pokedata);
-        let results = jsonPokeData.results;
-        // build a profile for the pokemon
-    },
-    
-    parsePokemonList : function(component, pokelist) {
-    	//var pokelist = component.get('v.listOfPokemon');
-        let jsonPokeList = JSON.parse(pokelist);
-        let results = jsonPokeList.results;
-		let finalResults = results.map(function (item, index){
-            let tempMap = {};
-            tempMap.name = item.name;
-			let urlBits = item.url.split('/');
-            tempMap.index = urlBits[urlBits.length-2];
-            return tempMap;
+        let action = component.get("c.getPokeData");
+        action.setParams({"apiTarget1": targetLink1, "apiTarget2": targetLink2});
+        action.setCallback(this, function(result){
+            let state = result.getState();
+            if(state == 'SUCCESS'){
+				const returns = JSON.parse(result.getReturnValue()).results;
+                let finalResults = {
+                    name : returns[0].name,
+                    evolution_chain : returns[0].evolution_chain,
+                    evolves_from_species : returns[0].evolves_from_species,
+                    shape : returns[0].shape,
+                    generation : returns[0].generation,
+                    flavor_text_entries : returns[0].flavor_text_entries,
+                    is_baby : returns[0].is_baby,
+                    is_legendary : returns[0].is_legendary,
+                    is_mythical : returns[0].is_mythical,
+                    moves : returns[1].moves,
+                    height : returns[1].height,
+                    weight : returns[1].weight,
+                    stats : returns[1].stats,
+                    sprites : returns[1].sprites,
+                    types : returns[1].types,
+                    
+                }
+                //name
+                //evolution chain
+                //evolves from species
+                //shape
+                //generation
+                //flavor text entries
+                //is baby
+                //is legendary
+                //is mythical
+                //moves
+                //height
+                //wieght
+                //stats
+                //sprites
+                //types0
+		        component.set('v.currentPokemonData', finalResults);
+            }
         });
-
-        component.set('v.listOfPokemon', finalResults);
-        
-    },
+        $A.enqueueAction(action);
+    }
     
 
     
