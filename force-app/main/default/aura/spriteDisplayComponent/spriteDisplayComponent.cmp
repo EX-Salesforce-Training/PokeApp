@@ -1,0 +1,13 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="source" type="string" default="" />
+    <div class="container">
+    	<div class=" one-sixth two-high">
+			<div class="grid-wrapper">
+	            <img src="{!v.source.front_default}" />
+                <img src="{!v.source.back_default}" />
+                <img src="{!v.source.front_shiny}" />
+                <img src="{!v.source.back_shiny}" />                        
+            </div>
+        </div>
+    </div>
+</aura:component>

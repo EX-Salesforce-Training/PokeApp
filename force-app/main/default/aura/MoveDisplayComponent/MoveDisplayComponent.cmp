@@ -1,0 +1,21 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="moves" type="String" default='1' />
+    <div class="container">
+		<div class="title">
+        	<h5>
+            	MOVES
+            </h5>
+        </div>
+        <div  class="table">
+			<table>
+				<aura:iteration items="{!v.moves}" var="move" >
+                    <tr>
+                        <th class="element">
+                        	{!move.move.name}
+                        </th>
+                    </tr>
+                </aura:iteration>
+            </table>
+        </div>
+    </div>
+</aura:component>

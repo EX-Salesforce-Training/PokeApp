@@ -1,0 +1,18 @@
+.THIS {
+    width:14vw;
+}
+
+.THIS .title{
+    text-align:center;
+    padding:.4em;
+}
+
+.THIS .element{
+    padding:.3em;
+}
+
+.THIS .table{
+    max-height: 52vh !important;
+    background-color: #DDD;
+    overflow-y: auto;
+}

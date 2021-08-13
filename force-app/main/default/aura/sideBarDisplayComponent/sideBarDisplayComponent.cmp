@@ -1,0 +1,7 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<!--Yo dawg I heard you like components-->
+	<aura:attribute name="pokemon" type="String" default='1' />
+    <c:spriteDisplayComponent source="{!v.pokemon.sprites}" />
+    <c:StatDisplayComponent stats="{!v.pokemon.stats}" />
+    <c:MoveDisplayComponent moves="{!v.pokemon.moves}" />
+</aura:component>
