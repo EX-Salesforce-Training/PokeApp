@@ -1,7 +1,72 @@
 .THIS {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.THIS.layout {
+
+.THIS .data-table-item {
+    padding: 0.4rem;
+    min-width: 20vw;
+    cursor: pointer;
+}
+
+.THIS .data-table {
+ 
+}
+
+.THIS .data-table-row {
+	background-color: #FBFFB9;
+    transition: background-color 0.5s;
+}
+
+.THIS .data-table-row:hover {
+	background-color: #F9FF85;
+    transition: background-color 0.5s;
+}
+
+.THIS .data-link {
+    display: block;
+}
+
+.THIS .pagination-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 0.4rem;
+    color: #0C49AC;
+    transition: color 0.5s;
+}
+
+.THIS .pagination-button:hover {
+    color: #1062E5;
+    transition: color 0.5s;
+}
+
+
+.THIS .text-center {
+    display: flex;
+    justify-content: center;
+}
+
+.THIS .page-header {
     display: grid;
-    grid-template-columns: 1fr 9fr;
+    grid-template-columns: 2fr 8fr; 
+}
+
+.THIS .page-title {
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    margin-left: 2%;
+}
+
+.THIS .data-table-header {
+    font-weight: bold;
+    background-color: #E1CE7A;
+    padding: 0.4rem;
+    min-width: 20vw;
+}
+
+.THIS .data-table-wrapper {
+    display: flex;
+    justify-content: center;
 }
