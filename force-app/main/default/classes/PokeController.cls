@@ -8,10 +8,10 @@ public class PokeController {
     }
     
     @AuraEnabled
-    public static String getPokeData(String apiTarget1, String apiTarget2){
+    public static List<String> getPokeData(String apiTarget1, String apiTarget2){
         String firstData = APIExchange.makeJsonCallout(apiTarget1);
         String secondData = APIExchange.makeJsonCallout(apiTarget2);
-        String finalData = '[' + firstData + ',' + ']';
+        List<String> finalData = new List<String>{firstData, secondData};
         return finalData;
     }
     

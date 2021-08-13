@@ -1,3 +1,7 @@
 <aura:application >
-    <c:Pokedex />
+    <!--
+        <c:MenuBar />
+        <c:Pokedex />
+	-->
+    <c:PokemonInfo />
 </aura:application>

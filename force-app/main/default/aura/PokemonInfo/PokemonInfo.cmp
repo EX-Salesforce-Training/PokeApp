@@ -1,11 +1,14 @@
-<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
-    <aura:attribute name="pokeData" type="String" default="null" />
+<aura:component controller="PokeController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="currentPokemonData" type="Map" default="{}" />
+    <aura:attribute name="pokeName" type="String" default='bulbasaur' />
+    <aura:attribute name="pokeId" type="String" default='1' />
     
-    <aura:handler name="init" value="{!this}" action="{!c.getPokemonData}"/>
     
-    <aura:if isTrue="{!v.pokeData != null}">
+    <aura:handler name="init" value="{!this}" action="{!c.populateData}"/>
+    
+    <aura:if isTrue="{! and(pokeName != '', pokeId != '0') }">
     	<div class="information">
-        	
+        	{! v.currentPokemonData.name}
         </div>
     </aura:if>
     
