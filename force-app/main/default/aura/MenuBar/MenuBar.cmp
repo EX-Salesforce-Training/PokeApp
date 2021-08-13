@@ -1,35 +1,60 @@
 <aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
     <aura:attribute name="visibleItem" type="String" default='' />
+    <aura:attribute name="backButton" type="Boolean" default='false' />
+    
+    <aura:attribute name="pokemonList" type="Object[]" default="{}" />
+    <aura:attribute name="pokemonFilteredList" type="Object[]" default="{}" />
+    
+    <aura:registerEvent name="Set_Pokemon" type="c:Set_Pokemon" />
+    
+    <aura:handler event="c:Set_Pokemon" action="{! c.setBackButton }"/>
+    <aura:handler event="c:Update_Pokemon_List" action="{! c.updatePokemonList }"/>
+    <aura:handler name="updateList" event="c:Update_Pokemon_Filter_List" action="{! c.noop }" />
+    <aura:registerEvent name="updateList" type="c:Update_Pokemon_Filter_List" />
     
     <div class="menu-container">
         <ul class='menu-list'>
-            <li class='menu-item'>
+            
+            <li class='menu-item' aura:id='search-btn' >
                 <a class="blank-btn" id='search' onclick="{! c.toggleItem }">
-                	<lightning:icon class="slds-icon_small" iconName='standard:search' />
+                    <lightning:icon class="slds-icon_small" iconName='standard:search' />
                 </a>
             </li>
             
-            <!--
-            <li class='menu-item'>
-                <a class="blank-btn" onclick="{! c.toggleItem }" id='filter'>
-                    <lightning:icon class="slds-icon_small" iconName='standard:filter' />
+            <li class='menu-item icon-is-hidden' aura:id='back-btn'>
+                <a class="blank-btn" id='search' onclick="{! c.back }">
+                    <lightning:icon class="slds-icon_small" iconName='utility:back' />
                 </a>
-            </li>
-			-->
-            
-            
+            </li> 
         </ul>
     </div>
     
     <div aura:id="search-menu" class="search-tool is-hidden">
         <div class="search-bar-wrapper">
             <div class="menu-search-item">
-                <label class="slds-form-element__label" for="search-bar">Search</label>
-                <div class="w-100 flex-center-h">
-                	<input id="search-bar" class="menu-bar search-bar" placeholder = 'search...'/>
-                </div>
+                <form onsubmit="{! c.filter }">
+                    <label class="slds-form-element__label" for="search-bar">Search</label>
+                    <div class="w-100 flex-center-h">
+                        <input id="search-bar" name='filter' class="menu-bar search-bar" placeholder = 'search...'/>
+                    </div>
+                </form>
             </div>
             
+            
+            <div class="search-results">
+                <p class='search-p'>Type something in the search bar to filter the pokemon on the current page!</p>
+                <aura:iteration items="{! v.pokemonFilteredList }" var="pokemon">
+                    <ul class="search-list">
+                        <a href="#" onclick="{! c.loadData }" id="{! 'name=' + pokemon.name + ';id=' + pokemon.id }">
+                            <li id="{! 'name=' + pokemon.name + ';id=' + pokemon.id }">
+                                {! pokemon.id }&nbsp;{! pokemon.name }
+                            </li>
+                        </a>
+                    </ul>
+                </aura:iteration>
+            </div>
+            
+            <!--
             <div class="menu-search-item">
                 <label class="slds-form-element__label" for="filter-bar">Filter by</label>
                 <div class="slds-form-element__control w-100">
@@ -43,29 +68,9 @@
                     </div>
                 </div>
             </div>
+			-->
         </div>
     </div>
-    
-    <!--
-    <div aura:id="filter-menu" class="search-tool is-hidden">
-        <div class="search-bar-wrapper w-100">
-            <div class="slds-form-element w-100">
-                <label class="slds-form-element__label" for="select-01">Filter by</label>
-                <div class="slds-form-element__control w-100">
-                    <div class="slds-select_container w-100 flex-center-h">
-                        <select class="slds-select menu-bar filter-bar" id="select-01">
-                            <option>None</option>
-                            <option>Generation</option>
-                            <option>Location</option>
-                            <option>Legendary</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-	-->
     
     
 </aura:component>

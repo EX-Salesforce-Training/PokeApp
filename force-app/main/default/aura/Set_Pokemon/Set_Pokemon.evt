@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION">
+    <aura:attribute name="pokeName" type="String" />
+    <aura:attribute name="pokeId" type="String" />
+</aura:event>

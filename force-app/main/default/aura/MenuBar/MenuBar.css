@@ -83,6 +83,10 @@
     
 }
 
+.THIS .icon-is-hidden {
+    display: none;
+}
+
 /* utility */
 
 .THIS .flex-center-h {
@@ -92,4 +96,21 @@
 
 .THIS .w-100 {
     width: 100%;
+}
+
+.THIS .search-results {
+    align-self: flex-start;
+    margin-top: 1rem;
+    max-height: 70vh;
+    background-color: #F39B6D;
+    width: 99%;
+    overflow-y: auto;
+}
+
+.THIS .search-list {
+    list-style: none;
+}
+
+.THIS .search-p {
+    padding: 1rem;
 }

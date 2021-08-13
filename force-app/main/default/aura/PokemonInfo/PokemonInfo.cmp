@@ -7,8 +7,95 @@
     <aura:handler name="init" value="{!this}" action="{!c.populateData}"/>
     
     <aura:if isTrue="{! and(pokeName != '', pokeId != '0') }">
-    	<div class="information">
-        	{! v.currentPokemonData.name}
+        <div class="information">
+            <!--
+                    name : returns[0].name,
+                    evolution_chain : returns[0].evolution_chain,
+                    evolves_from_species : returns[0].evolves_from_species,
+                    shape : returns[0].shape,
+                    generation : returns[0].generation,
+                    flavor_text_entries : filteredFlavorText,
+                    is_baby : returns[0].is_baby,
+                    is_legendary : returns[0].is_legendary,
+                    is_mythical : returns[0].is_mythical,
+                    moves : returns[1].moves,
+                    height : returns[1].height,
+                    weight : returns[1].weight,
+                    stats : returns[1].stats,
+                    sprites : returns[1].sprites,
+                    types : returns[1].types
+             -->
+            <div class="container">
+                <ul>
+                    <div class='description-table' style="margin-bottom: 1rem">
+                        <h2 class="description-header">General Description</h2>
+                        
+                        <div class="description-wrapper">
+                            <li class="general-description-li">
+                                <span>Name:</span>
+                                <span>{! v.currentPokemonData.name}</span>
+                            </li>
+                            <li class="general-description-li">
+                                <span>Evolves From:</span> 
+                                <span>{! if(v.currentPokemonData.evolves_from_species != null, v.currentPokemonData.evolves_from_species.name, 'None') }</span>
+                            </li>
+                            <li class="general-description-li">
+                                <span>Shape:</span> 
+                                <span>{! v.currentPokemonData.shape.name }</span> 
+                            </li>
+                            <li class="general-description-li">
+                                <span>Generation:</span> 
+                                <span>{! v.currentPokemonData.generation.name }</span> 
+                            </li>
+                            <li class="general-description-li">
+                                <span>Is Baby:</span> 
+                                <span>{! if(v.currentPokemonData.is_baby, 'Yes', 'No') }</span> 
+                            </li>
+                            <li class="general-description-li">
+                                <span>Is Legendary:</span> 
+                                <span>{! if(v.currentPokemonData.is_legendary, 'Yes', 'No' )}</span> 
+                            </li>
+                            <li class="general-description-li">
+                                <span>Is Mythical:</span> 
+                                <span>{! if(v.currentPokemonData.is_mythical, 'Yes', 'No' )}</span> 
+                            </li>
+                            <li class="general-description-li">
+                                <span>Height:</span> 
+                                <span>{! v.currentPokemonData.height } Meters</span>
+                            </li>
+                            <li class="general-description-li">
+                                <span>Types:</span> 
+                                <span>
+                                    <aura:iteration items="{! v.currentPokemonData.types }" var="typeMetaData">
+                                        {! typeMetaData.type.name }&nbsp;
+                                    </aura:iteration>
+                                </span>
+                            </li>
+                        </div>
+                    </div>
+                    
+                    <div class='description-menu'>
+                        <h2 class="menu-header">Menu</h2>
+                        
+                        <div class="description-items">
+                            <aura:iteration items="{! v.currentPokemonData.flavor_text_entries }" var="entry">
+                                <a class="description-link" href="{!'#' + entry.version.name}">Pokemon {! entry.version.name }</a>
+                            </aura:iteration>
+                        </div>
+                    </div>
+                    
+                    <div class='description-table'>
+                        <h2 class='description-header'>Pokedex Descriptions</h2>
+                        
+                        <aura:iteration items="{! v.currentPokemonData.flavor_text_entries }" var="entry">
+                            <div class="description-wrapper" id="{! entry.version.name }">
+                                <h3 class="description-sub-header">Pokemon {! entry.version.name }</h3>
+                                <p class='description-info'>{! entry.flavor_text }</p>
+                            </div>
+                        </aura:iteration>
+                    </div>
+                </ul>
+            </div>
         </div>
     </aura:if>
     

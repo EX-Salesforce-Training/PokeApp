@@ -5,17 +5,21 @@
         let targetLink = "https://pokeapi.co/api/v2/pokemon-species/?offset=" + (page * 20).toString() + "&limit=20";
         let action = component.get("c.getJsonString");
         action.setParams({"apiTarget" : targetLink});
-        action.setCallback(this, function(result){
+        action.setCallback(this, function(result) {
+            
             let state = result.getState();
             if(state == 'SUCCESS'){
+                
 				const parsedData = JSON.parse(result.getReturnValue()).results;
                 const names = parsedData.map( function ({name}) {return name} );
                 const ids = parsedData.map( function ({url}) {
                     const urlArr = url.split('/');
                     const id = urlArr[urlArr.length-2];
                     return id;});
+                const urls = parsedData.map(function ({url}) { return url });
                 
                 const maps = [];
+                
                 for(let i = 0; i < parsedData.length; i++){
                     maps.push({
                         id: ids[i],
@@ -23,13 +27,22 @@
                         url: urls[i]
                     });
                 }
-                component.set('v.listOfPokeMon', maps);
+                
+                component.set('v.listOfPokemon', maps);
+                
+                const appEvent = $A.get("e.c:Update_Pokemon_List");
+                console.log(maps);
+                appEvent.setParams({ pokeList: maps });
+                appEvent.fire();
             }
         });
         $A.enqueueAction(action);
     },
-    
-
+    updatePokemonListInMenu: function(component, event, helper) {
+        const appEvent = $A.get("e.c:Update_Pokemon_List");
+        appEvent.setParams({ pokeList: component.get('v.listOfPokemon') });
+        appEvent.fire();
+    },
     getPokeData : function(component, id, name){
         let targetLink1 = "https://pokeapi.co/api/v2/pokemon-species/" + id + "/";
         let targetLink2 = "https://pokeapi.co/api/v2/pokemon/" + name + "/";
