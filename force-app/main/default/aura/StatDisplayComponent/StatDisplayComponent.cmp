@@ -1,6 +1,6 @@
 <aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
 	<aura:attribute name="stats" type="String" default='1' />
-	<div class="container">
+	<div class="container" style="min-width: 200px;">
 		<div class="grid-container">
             <aura:iteration items="{!v.stats}" var="stat" >
 				<div class="grid-wrapper">

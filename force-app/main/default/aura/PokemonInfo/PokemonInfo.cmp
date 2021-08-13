@@ -25,7 +25,12 @@
                     sprites : returns[1].sprites,
                     types : returns[1].types
              -->
+            <div style="position: absolute; right: 0; top: 1rem;">
+                <c:sideBarDisplayComponent pokemon="{!v.currentPokemonData}" />
+            </div>
+            
             <div class="container">
+                
                 <ul>
                     <div class='description-table' style="margin-bottom: 1rem">
                         <h2 class="description-header">General Description</h2>

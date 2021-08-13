@@ -1,6 +1,6 @@
 <aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
 	<aura:attribute name="moves" type="String" default='1' />
-    <div class="container">
+    <div class="container" style="min-width: 200px">
 		<div class="title">
         	<h5>
             	MOVES
