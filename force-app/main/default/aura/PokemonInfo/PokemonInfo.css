@@ -1,0 +1,71 @@
+.THIS {
+}
+
+.THIS .container {
+    margin-left: 10vw;
+}
+
+.THIS .description-header {
+    font-size: 1.5rem;
+    background-color: #003D3C;
+    padding: 1rem;
+}
+
+.THIS .description-wrapper {
+    display: block;
+    padding: 0.35rem;
+}
+
+.THIS .description-sub-header {
+    font-size: 1.25rem;
+    padding: 0.25rem;
+}
+
+.THIS .description-table {
+    background-color: #007A78;
+    width: 70vw;
+    color: white;
+}
+
+.THIS .description-info {
+    padding: 0.5rem;
+}
+
+.THIS .description-menu {
+    width: 70vw;
+    background-color: #A3A300;
+    color: white;
+    margin-bottom: 1rem;
+    overflow-x: auto;
+}
+
+.THIS .menu-header {
+    background-color: #292900;
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.THIS .description-items {
+    background-color: #A3A300;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 30vh;
+}
+
+.THIS .description-link {
+    margin: 0.35rem;
+    color: #ACD2ED;
+    transition: color 0.5s;
+}
+
+.THIS .description-link:hover {
+    color: #68ADDE;
+    transition: color 0.5s;
+}
+
+.THIS .general-description-li {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

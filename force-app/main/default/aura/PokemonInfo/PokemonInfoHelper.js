@@ -10,8 +10,14 @@
             if(state == 'SUCCESS'){
                 const returns = result.getReturnValue()
                 	.map(JSON.parse)
-                const flavorTextEntries = returns[0].flavor_text_entries
-                const filteredFlavorText = flavorTextEntries.filter(entry => entry.language.name === 'en');
+                
+                // filter the flavor text to only be the English ones
+                const flavorTextEntries = returns[0].flavor_text_entries;
+                let filteredFlavorText = flavorTextEntries
+                	.filter(entry => entry.language.name === 'en')
+                for(let i = 0; i < filteredFlavorText.length; i++) {
+                    filteredFlavorText[i].flavor_text = filteredFlavorText[i].flavor_text.replace('\u000c', ' ');
+                }
                 
                 
                 let finalResults = {
