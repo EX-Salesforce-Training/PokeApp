@@ -1,0 +1,36 @@
+.THIS.container{
+    width:14vw;
+}
+
+.THIS .one-third{
+    width:33vw;
+}
+
+.THIS .grid-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.THIS .one-sixth{
+    width:16.5vw;
+}
+
+.THIS .one-tenth{
+    width:10vw;
+}
+
+.THIS .spriteDisplay_test{
+    background-color:#123456;
+}
+
+.THIS .one-high{
+    height:10vh;
+}
+
+.THIS .two-high{
+    height:20vh;
+}
+
+.THIS img{
+
+}
